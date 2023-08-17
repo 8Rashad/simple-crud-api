@@ -1,7 +1,10 @@
 package com.example.jpa.controller;
 
-import com.example.jpa.model.UserRequest;
-import com.example.jpa.model.UserResponse;
+import com.example.jpa.model.criteria.PageCriteria;
+import com.example.jpa.model.criteria.UserCriteria;
+import com.example.jpa.model.request.UserRequest;
+import com.example.jpa.model.response.PageableUserResponse;
+import com.example.jpa.model.response.UserResponse;
 import com.example.jpa.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +26,10 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @GetMapping
-    public List<UserResponse> getUsers(){
-        return userService.getUsers();
-    }
+//    @GetMapping
+//    public List<UserResponse> getUsers(){
+//        return userService.getUsers();
+//    }
 
 
     @PostMapping
@@ -40,5 +43,10 @@ public class UserController {
     @ResponseStatus(NO_CONTENT)
     public void setBirthPlace(@PathVariable Long id, @RequestParam String birthPlace){
         userService.setBirthPlace(id, birthPlace);
+    }
+
+    @GetMapping
+    public PageableUserResponse getUsers(PageCriteria pageCriteria, UserCriteria userCriteria){
+        return userService.getUsers(pageCriteria, userCriteria);
     }
 }

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ingress_ms_15_db
+    url: jdbc:postgresql://localhost:5432/ingress_rashad_15
     username: postgres
     password: rashadnewpassword
   jpa:

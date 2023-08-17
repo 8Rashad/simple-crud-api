@@ -25,8 +25,6 @@ public class UserEntity {
 
     private String username;
     private Integer age;
-
-    @Column(name = "birth_place")
     private String birthPlace;
 
     @CreationTimestamp
