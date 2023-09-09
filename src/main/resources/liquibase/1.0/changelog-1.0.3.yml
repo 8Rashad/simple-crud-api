@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: Add new column
+      author: Rashad Suleymanov
+      changes:
+        - addColumn:
+            tableName: cards
+            columns:
+              - column:
+                  name: expire_date
+                  type: timestamp
+
+
+
+

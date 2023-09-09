@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: modify column
+      author: Rashad Suleymanov
+      changes:
+        - modifyDataType:
+            tableName: cards
+            columnName: status
+            newDataType: VARCHAR(255)
+
+
+
+

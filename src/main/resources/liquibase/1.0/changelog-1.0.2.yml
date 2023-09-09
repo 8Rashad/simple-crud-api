@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create cards table
+      author: Rashad Suleymanov
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: pan
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cvv
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cardHolder
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: createdAt
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the record created
+
+              - column:
+                  name: updatedAt
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: Last update of record
+
+            remarks: Table to store info about users
+
+
+
