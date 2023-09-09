@@ -1,49 +1,41 @@
 package com.example.jpa.dao.entity;
 
+
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import java.time.LocalDateTime;
+
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "accounts")
 @Builder
-public class UserEntity {
+public class AccountEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private BigDecimal amount;
 
-    private String username;
-    private Integer age;
-    private String birthPlace;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    @Version
+    private Long version;
 
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserEntity that = (UserEntity) o;
+        AccountEntity that = (AccountEntity) o;
         return id != null && Objects.equals(id, that.id);
     }
     @Override
     public int hashCode(){
         return getClass().hashCode();
     }
-
-
 
 }

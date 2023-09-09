@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -13,3 +15,25 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/liquibase/changelog-master.yml
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 10s
+          max-attempts: 5
+          max-interval: 15s
+          multiplier: 1
+        missing-queues-fatal: false
+rabbitmq:
+  users:
+    queue: USER_Q
+    dlq: USER_DLQ
+
+redis:
+  server:
+    urls: redis://localhost:6379
